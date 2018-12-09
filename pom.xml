@@ -16,6 +16,7 @@
   </modules>
 
   <!-- Adding Comment -->
+  <!-- ADD next comment -->
   <prerequisites>
     <maven>3.0.3</maven>
   </prerequisites>
