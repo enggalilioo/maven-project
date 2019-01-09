@@ -1,4 +1,6 @@
 *.iml
 *.idea
-target
-bin\
+**/target
+*.class
+*.project
+*.classpath
