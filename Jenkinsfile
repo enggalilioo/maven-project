@@ -7,7 +7,7 @@ pipeline {
                         label "master"
                 }
         steps {
-                echo 'Will clone source code on master agent'
+                echo 'This will clone source code on master agent'
                 git 'https://enggalilioo@bitbucket.org/maven_sample/maven_sample.git'
                 }
         }
@@ -38,8 +38,8 @@ pipeline {
                         label "Windows_Node"
                     }
                     steps {
-                        echo "Copy Artifact from another project"
-                        deleteDir()
+                        echo "Copy Artifact from the last successful build"
+                        deleteDir() /* clean up our workspace */
                         copyArtifacts filter: 'single-module/target/*.jar', fingerprintArtifacts: true, projectName: 'Simple_pipeline', selector: lastSuccessful()
                         }
                     }
