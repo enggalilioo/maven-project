@@ -2,17 +2,18 @@ pipeline {
     agent none
     stages {
 	
-	stage('Git-Clone on Master') {
+	stage('Checkout source code on Jenkins master node') {
 	    agent {
                         label "master"
                 }
         steps {
-                echo 'This will clone source code on master agent'
-                git 'https://enggalilioo@bitbucket.org/maven_sample/maven_sample.git'
+                // Git clone from bitbucket.org 
+                echo 'This will clone source code on master node'
+                git 'https://github.com/enggalilioo/maven-project.git'
                 }
         }
         
-    stage('Build on Master Agent') {
+    stage('Build project on Jenkins master node') {
 	    agent {
                         label "master"
                 }
@@ -31,7 +32,7 @@ pipeline {
         
 
 	
-    stage('Run Tests') {
+    stage('Deploy and Test the project') {
             parallel {
                 stage('Copy Artifact to Windows_Node Agent') {
                     agent {
