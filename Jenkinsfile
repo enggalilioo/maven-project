@@ -10,6 +10,7 @@ pipeline {
                 // Git clone from bitbucket.org 
                 echo 'This will clone source code on master node'
                 git 'https://github.com/enggalilioo/maven-project.git'
+                bat 'git Checkout development'
                 }
         }
         
