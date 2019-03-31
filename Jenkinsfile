@@ -40,21 +40,21 @@ pipeline {
         }
     }
 
-    stage("SonarQube Quality Gate") {
-        agent {
-                        label "master"
-                }
-        steps {
-                timeout(time: 1, unit: 'HOURS') {
-                    waitForQualityGate abortPipeline: true
-                }
-            }
-    }   
+    //stage("SonarQube Quality Gate") {
+      //  agent {
+                        // label "master"
+              //  }
+        // steps {
+            //    timeout(time: 1, unit: 'HOURS') {
+                //    waitForQualityGate abortPipeline: true
+                // }
+            // }
+    // } 
 
 	
     stage('Copy && deploy App to Dev Env.') {
                     agent {
-                        label "Windows_Node"
+                        label "Build_Agent"
                     }
                     steps {
                         echo "Copy Artifact from the last successful build"
