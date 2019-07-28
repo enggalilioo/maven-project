@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings xmlns="http://maven.apache.org/SETTINGS/1.1.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.1.0 http://maven.apache.org/xsd/settings-1.1.0.xsd">
+
+	<servers>
+		<server>
+		  <id>nexus-snapshots</id>
+		  <username>ci-user</username>
+		  <password>Aa123456</password>
+		</server>
+		<server>
+		  <id>nexus-releases</id>
+		  <username>ci-user</username>
+		  <password>Aa123456</password>
+		</server>
+	  </servers>
+	<!-- *******************************************************************************************  -->
+	
+	<mirrors>
+		<mirror>
+			  <!--This sends everything else to /public -->
+			  <id>nexus</id>
+			  <mirrorOf>*</mirrorOf>
+			  <url>http://nexus.elm.sa:8081/repository/maven-public/</url>
+		</mirror>
+	</mirrors>
+  
+	<activeProfiles>
+		<!--make the profile active all the time -->
+		<activeProfile>nexus</activeProfile>
+	</activeProfiles>
+  
+	<profiles>
+		<profile>
+		  <id>nexus</id>
+		  <!--Enable snapshots for the built in central repo to direct -->
+		  <!--all requests to nexus via the mirror -->
+		  <repositories>
+			<repository>
+			  <id>maven-releases</id>
+			  <url>http://nexus.elm.sa:8081/repository/libs-release-local/</url>
+				<releases>
+					<enabled>true</enabled>
+				</releases>
+			</repository>
+			
+			<repository>
+			  <id>maven-snapshots</id>
+			  <url>http://nexus.elm.sa:8081/repository/libs-snapshot-local/</url>
+				<snapshots>
+					<enabled>true</enabled>
+				</snapshots>
+			</repository>
+			
+			<repository>
+			  <id>maven-central</id>
+			  <url>http://nexus.elm.sa:8081/repository/maven-central/</url>
+				<snapshots>
+					<enabled>true</enabled>
+				</snapshots>
+			</repository>
+			
+			<repository>
+			  <id>maven-public</id>
+			  <url>http://nexus.elm.sa:8081/repository/maven-public/</url>
+				<snapshots>
+					<enabled>true</enabled>
+				</snapshots>
+			</repository>
+		 </repositories>
+		 
+		 <pluginRepositories>
+			<pluginRepository>
+			  <id>central</id>
+			  <url>http://nexus.elm.sa:8081/repository/maven-central/</url>
+			  <releases><enabled>true</enabled></releases>
+			  <snapshots><enabled>true</enabled></snapshots>
+			</pluginRepository>
+		  </pluginRepositories>
+		</profile>
+		
+		<profile>
+			<id>sonarqube</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<sonar.jdbc.url>jdbc:sqlserver://10.33.6.15:9000;databaseName=sonar</sonar.jdbc.url>
+				<sonar.jdbc.username>sonar</sonar.jdbc.username>
+				<!-- <sonar.jdbc.driverClassName>com.mysql.jdbc.Driver</sonar.jdbc.driverClassName> -->
+				<sonar.jdbc.password>sonar</sonar.jdbc.password>
+				<!-- SERVER ON A REMOTE HOST -->	  
+				<!--<sonar.host.url>http://elm-vmdev-01:8080/sonar</sonar.host.url> -->
+				<sonar.host.url>http://10.33.6.15:9000/</sonar.host.url>
+				<!--<sonar.exclusions>com.elm.yakeen.classwriters.*.java,com.elm.yakeen.gen.generator.*.java</sonar.exclusions>-->
+		
+				<sonar.exclusions>**/test/*,**/*.js,**/*.xml,**/Jpa*.java,**/*Dto.java,**/dto/**/*.java</sonar.exclusions>
+				<!-- <sonar.test.inclusions>com.elm.yakeen.classwriters.*.java,com.elm.yakeen.gen.*.java</sonar.test.inclusions> -->
+				<!--<sonar.java.coveragePlugin>jacoco | cobertura | emma | clover</sonar.java.coveragePlugin> -->
+				<sonar.java.coveragePlugin>cobertura</sonar.java.coveragePlugin>
+				<sonar.sourceEncoding>UTF-8</sonar.sourceEncoding>
+			</properties>
+		</profile>
+	</profiles>	
+ </settings>

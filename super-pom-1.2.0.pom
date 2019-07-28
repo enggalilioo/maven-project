@@ -1,0 +1,57 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.elm.common</groupId>
+    <artifactId>super-pom</artifactId>
+    <version>1.2.0</version>
+    <packaging>pom</packaging>
+    <name>elm-super-pom</name>
+    <url>http://nexus.elm.sa:8081/sites/</url>
+    <description>base POM project of all internal project</description>
+    
+	
+	
+	<distributionManagement>
+        <repository>
+            <id>libs-release-local</id>
+            <url>http://nexus.elm.sa:8081/repository/libs-release-local/</url>
+        </repository>
+        <snapshotRepository>
+            <id>libs-snapshot-local</id>
+            <url>http://nexus.elm.sa:8081/repository/libs-snapshot-local/</url>
+        </snapshotRepository>
+    </distributionManagement>
+    <organization>
+        <name>Al Elm</name>
+        <url>https://www.elm.com.sa</url>
+    </organization>
+   
+        <build>
+       <pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.sonarsource.scanner.maven</groupId>
+					<artifactId>sonar-maven-plugin</artifactId>
+					<version>3.6.0.1398</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+
+			
+		<plugins>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>cobertura-maven-plugin</artifactId>
+					<version>2.6</version>
+					<configuration>
+						<formats>
+							<format>xml</format>
+						</formats>
+					</configuration>
+				</plugin>
+			</plugins>
+			
+			
+        </build>
+
+</project>
