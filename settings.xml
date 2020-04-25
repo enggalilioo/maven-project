@@ -22,7 +22,7 @@
 			  <!--This sends everything else to /public -->
 			  <id>nexus</id>
 			  <mirrorOf>*</mirrorOf>
-			  <url>http://nexus.elm.sa:8081/repository/maven-public/</url>
+			  <url>http://192.168.8.105:8081/repository/maven-public/</url>
 		</mirror>
 	</mirrors>
   
@@ -39,7 +39,7 @@
 		  <repositories>
 			<repository>
 			  <id>maven-releases</id>
-			  <url>http://nexus.elm.sa:8081/repository/libs-release-local/</url>
+			  <url>http://192.168.8.105:8081/repository/libs-releases/</url>
 				<releases>
 					<enabled>true</enabled>
 				</releases>
@@ -47,7 +47,7 @@
 			
 			<repository>
 			  <id>maven-snapshots</id>
-			  <url>http://nexus.elm.sa:8081/repository/libs-snapshot-local/</url>
+			  <url>http://192.168.8.105:8081/repository/libs-snapshot/</url>
 				<snapshots>
 					<enabled>true</enabled>
 				</snapshots>
@@ -55,7 +55,7 @@
 			
 			<repository>
 			  <id>maven-central</id>
-			  <url>http://nexus.elm.sa:8081/repository/maven-central/</url>
+			  <url>http://192.168.8.105:8081/repository/maven-central/</url>
 				<snapshots>
 					<enabled>true</enabled>
 				</snapshots>
@@ -63,7 +63,7 @@
 			
 			<repository>
 			  <id>maven-public</id>
-			  <url>http://nexus.elm.sa:8081/repository/maven-public/</url>
+			  <url>http://192.168.8.105:8081/repository/maven-public/</url>
 				<snapshots>
 					<enabled>true</enabled>
 				</snapshots>
@@ -73,7 +73,7 @@
 		 <pluginRepositories>
 			<pluginRepository>
 			  <id>central</id>
-			  <url>http://nexus.elm.sa:8081/repository/maven-central/</url>
+			  <url>http://192.168.8.105:8081/repository/maven-central/</url>
 			  <releases><enabled>true</enabled></releases>
 			  <snapshots><enabled>true</enabled></snapshots>
 			</pluginRepository>
@@ -86,13 +86,13 @@
 				<activeByDefault>true</activeByDefault>
 			</activation>
 			<properties>
-				<sonar.jdbc.url>jdbc:sqlserver://10.33.6.15:9000;databaseName=sonar</sonar.jdbc.url>
+				<!-- <sonar.jdbc.url>jdbc:sqlserver://10.33.6.15:9000;databaseName=sonar</sonar.jdbc.url> -->
 				<sonar.jdbc.username>sonar</sonar.jdbc.username>
 				<!-- <sonar.jdbc.driverClassName>com.mysql.jdbc.Driver</sonar.jdbc.driverClassName> -->
 				<sonar.jdbc.password>sonar</sonar.jdbc.password>
 				<!-- SERVER ON A REMOTE HOST -->	  
 				<!--<sonar.host.url>http://elm-vmdev-01:8080/sonar</sonar.host.url> -->
-				<sonar.host.url>http://10.33.6.15:9000/</sonar.host.url>
+				<sonar.host.url>http://192.168.8.105:9000/</sonar.host.url>
 				<!--<sonar.exclusions>com.elm.yakeen.classwriters.*.java,com.elm.yakeen.gen.generator.*.java</sonar.exclusions>-->
 		
 				<sonar.exclusions>**/test/*,**/*.js,**/*.xml,**/Jpa*.java,**/*Dto.java,**/dto/**/*.java</sonar.exclusions>
